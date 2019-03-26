@@ -170,7 +170,7 @@
           <h5 class="card-title">Actions</h5>
           <hr>
           <?php
-          echo "<button type=\"button\" class=\"btn btn-dark btn-block rounded-0\" data-toggle=\"modal\" data-target=\"#logModal\">View Player Log</button>";
+          //echo "<button type=\"button\" class=\"btn btn-dark btn-block rounded-0\" data-toggle=\"modal\" data-target=\"#logModal\">View Player Log</button>";
           if($driver[0] == $_SESSION['userID']){
             echo "<button type=\"button\" class=\"btn btn-success btn-block rounded-0\" onclick=\"loadcontent('/web/driverupdate.php', ''," . $driverID[0] . ");\">Update</button>";
           }
