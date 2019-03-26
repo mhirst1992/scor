@@ -18,7 +18,7 @@ var tabledata = [
   $sql = "SELECT core_Drivers.userID, core_Users.displayname, core_Drivers.firstname, core_Drivers.lastname, core_Drivers.drivernumber, " .
                 "core_Drivers.hometown, core_Drivers.archetype, core_Drivers.sponsor1, core_Drivers.sponsor2, core_Drivers.careerpath, " .
                 "core_Drivers.TPE, core_Drivers.APE, core_Drivers.AERO, core_Drivers.AGG, core_Drivers.CHA, core_Drivers.CON, " . 
-                "core_Drivers.ENG, core_Drivers.FIN, core_Drivers.QUA, core_Drivers.RDC, core_Drivers.SHT, core_Drivers.SDY, core_Drivers.SSY FROM core_Drivers " . 
+                "core_Drivers.ENG, core_Drivers.FIN, core_Drivers.QUA, core_Drivers.RDC, core_Drivers.SHT, core_Drivers.SDY, core_Drivers.SSY, core_Drivers.uniqueID FROM core_Drivers " . 
                 "INNER JOIN core_Users ON core_Drivers.userID = core_Users.userID";
   $result = $link->query($sql);
   while (($row = $result->fetch_array(MYSQLI_NUM)) != NULL) {
@@ -28,7 +28,7 @@ var tabledata = [
     //LogFile("newfile.txt", "Driver " . $row[3]);
     echo "{id:" . $row[0] . ", name:\"" . $row[2] . " " . $row[3] . "\", user:\"" . $row[1] . "\", number:" . $row[4] . ", sp1:\"" . $primary . "\", sp2:\"" . $secondary . 
          "\", tpe:" . $row[10] . ", ape:" . $row[11] . ", aero:" . $row[12] .", agg:" . $row[13] . ", cha:" . $row[14] . ", con:" . $row[15] . ", eng:" . $row[16] . 
-         ", fin:" . $row[17] . ", qua:" . $row[18] . ", rdc:" . $row[19] . ", sht:" . $row[20] . ", sdy:" . $row[21] . ", ssy:" . $row[22] . "},";
+         ", fin:" . $row[17] . ", qua:" . $row[18] . ", rdc:" . $row[19] . ", sht:" . $row[20] . ", sdy:" . $row[21] . ", ssy:" . $row[22] . ", uid:" . $row[23] . "},";
     }
 ?>
 
@@ -65,9 +65,10 @@ var table = new Tabulator("#example-table", {
 	 	{title:"SHT", field:"sht"},
 	 	{title:"SDY", field:"sdy"},
 	 	{title:"SSY", field:"ssy"},
+	 	{title:"uid", field:"uid", visible:false},
  	],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
- 		loadcontent('/web/yourdriver.php', '', row.getData().id);
+ 		loadcontent('/web/yourdriver.php', '', row.getData().uid);
  	},
 });
 </script>
