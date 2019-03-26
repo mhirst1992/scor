@@ -1,0 +1,5 @@
+/cgi-bin/config.php
+**/error_log
+/tmp
+/logs
+
